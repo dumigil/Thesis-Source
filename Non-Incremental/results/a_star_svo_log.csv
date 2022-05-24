@@ -1,0 +1,98 @@
+﻿PID,DATE,TIME,ELAPSED,CPU,MEM,RSS,VSIZE,CMD
+15768,03/05/2022,15:42:22,13:29,3.5,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:23,13:31,3.6,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:25,13:32,3.7,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:26,13:33,3.9,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:27,13:34,3.6,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:28,13:35,3.9,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:29,13:36,3.9,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:30,13:37,3.7,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:31,13:38,3.6,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:32,13:39,3.6,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:33,13:40,3.1,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:34,13:41,3.5,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:35,13:42,3.4,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:36,13:43,3.6,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:38,13:45,3.4,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:39,13:46,3,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:40,13:47,3.4,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:41,13:48,3.6,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:42,13:49,3.3,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:43,13:50,3.3,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:44,13:51,3.6,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:45,13:52,3.7,4.3,714152,36286140,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:46,13:53,7.9,4.3,714268,36288236,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:47,13:54,6.7,4.3,714288,36288236,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:48,13:55,5.8,4.3,714304,36288236,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:49,13:56,6.3,4.3,714308,36288236,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:50,13:57,4.6,4.3,714324,36288236,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:51,13:58,5.9,4.3,714276,36287188,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:52,14:00,4.8,4.3,714280,36287188,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:54,14:01,6.1,4.3,714284,36287188,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:55,14:02,4.8,4.3,714296,36287188,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:56,14:03,6.2,4.3,714296,36287188,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:57,14:04,4.9,4.3,714320,36287188,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:58,14:05,68.8,4.3,721372,36287108,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:42:59,14:06,998.7,4.4,729884,36302000,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:00,14:07,1145.6,4.6,76562,8  3631081,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:01,14:08,1155.4,4.9,81644,8  3632624,8  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:02,14:09,1159.3,5.1,85903,2  3632922,4  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:03,14:10,1158.4,5.4,89834,8  3633496,4  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:04,14:11,1157.5,5.5,93095,6  3634034,8  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:05,14:12,1159.7,5.8,97300,4  3635860,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:07,14:14,1149.2,6,100000,8  3635663,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:08,14:15,1161.8,6.1,102373,6  3635959,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:09,14:16,1162.6,6.1,102579,6  3635925,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:10,14:17,1169,6.1,102672,8  3635816,4  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:11,14:18,1153.9,6.1,102296,4  3635302,4  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:12,14:19,1145.1,6.1,102522,4  3635646,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:13,14:20,1167.1,6.1,101744,8  3634817,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:14,14:21,1150.7,6.1,102506,0  3636355,6  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:15,14:22,1170.5,6.1,102719,2  3636552,8  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:16,14:23,1171.3,6.1,102879,2  3636712,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:17,14:25,1118.5,6.1,102638,8  3636469,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:19,14:26,1138.4,6.1,102674,8  3636498,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:20,14:27,1165.9,6.1,102622,4  3636444,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:21,14:28,1169.5,6.1,102676,4  3636512,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:22,14:29,1169.4,6.1,102701,2  3636533,6  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:23,14:30,1142.9,6.1,102704,0  3636525,6  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:24,14:31,1143.3,6.1,102735,6  3636501,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:25,14:32,1163.6,6.1,102862,4  3636704,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:26,14:33,1162.6,6.1,102958,4  3636790,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:27,14:34,1170.7,6.1,102842,4  3636659,6  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:28,14:35,1145.8,6.1,102815,6  3636666,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:29,14:37,1155.3,6.1,102854,8  3636693,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:31,14:38,1159.4,6.1,103030,8  3636859,6  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:32,14:39,1169.5,6.1,102870,4  3636688,8  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:33,14:40,1164.9,6.1,102858,4  3636656,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:34,14:41,1131.3,6.1,102974,8  3636819,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:35,14:42,1161.5,6.1,102865,6  3636710,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:36,14:43,1155.1,6.1,102937,6  3636781,6  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:37,14:44,1163.5,6.1,102948,8  3636792,8  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:38,14:45,1160.6,6.1,102929,6  3636773,6  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:39,14:46,1140.4,6.1,102930,0  3636668,8  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:40,14:48,1166.1,6.1,102930,0  3636668,8  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:42,14:49,1167.2,6.1,102883,2  3636622,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:43,14:50,1171.2,6.1,102853,2  3636592,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:44,14:51,1164,6.1,102964,8  3636703,6  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:45,14:52,1149.6,6.1,102918,0  3636656,8  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:46,14:53,1166.3,6.1,103009,2  3636748,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:47,14:54,1169,6.1,102922,4  3636661,2  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:48,14:55,1167,6.1,102845,6  3636584,4  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:49,14:56,1153.7,6.1,102945,2  3636684,0  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:50,14:57,1149.8,6.1,102858,0  3636596,8  /Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:51,14:59,4.4,6,1002644,36315564,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:53,15:00,5.5,6,1002644,36315564,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:54,15:01,5.5,6,1002644,36315564,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:55,15:02,5.5,6,1002644,36315564,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:56,15:03,5.3,6,1002644,36315564,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:57,15:04,5.5,6,1002644,36315564,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:58,15:05,5.4,6,1002644,36315564,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:43:59,15:06,5.6,6,1002644,36315564,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:44:00,15:07,7.7,6,1002780,36315696,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:44:01,15:08,7.4,6,1002800,36315696,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:44:02,15:09,14.2,6,999608,36306416,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:44:03,15:10,4.2,6,999636,36306416,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:44:04,15:11,3.2,6,999640,36306416,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:44:05,15:12,3.6,6,999640,36306416,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator
+15768,03/05/2022,15:44:06,15:13,4.1,6,999672,36307988,/Users/michieldejong/Documents/Graduation/Simulator/cmake-build-debug/Debug/bin/Simulator

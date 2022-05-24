@@ -1,0 +1,3 @@
+start, goal, path_length, nodes_visited, time, num_evax
+124 38 103, 149 5 210, 2, 21210, 0.468366, 6
+124 38 103, 149 5 210, 302, 33067, 0.978199, 6
