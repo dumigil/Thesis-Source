@@ -101,7 +101,7 @@ private:
     GL::Buffer _instanceBuffer{NoCreate};
     GL::Buffer _fireBuffer{NoCreate};
     Containers::Array<Containers::Optional<GL::Mesh>> _meshes;
-    Color3 _colorClear = Color3::fromSrgb({0.9f, 0.9f,0.9f});
+    Color3 _colorClear = Color3::fromSrgb({1.0f, 1.0f,1.0f});
     Color3 _colorModel = Color3::fromSrgb({0.9f, 0.9f,0.9f});
     Shaders::PhongGL _shader;
     Shaders::PhongGL _voxelShader;
@@ -472,7 +472,7 @@ void Simulator::drawEvent() {
     _profiler.printStatistics(2000);
 
 
-    if(counter == 25) {
+    if(counter == 50) {
         _instanceData.clear();
         counter = 0;
     }

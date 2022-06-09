@@ -25,9 +25,9 @@ static double distSquared(Node *a, Node *b);
 static double distSquared(OctreeNode *a, OctreeNode *b);
 
 static int distManhattan(Voxel &a, Voxel &b);
-static int distDiagonal(Voxel &a, Voxel &b);
-static int distDiagonal(OctreeNode *a, OctreeNode *b);
-static int distDiagonal(Node *a, Node *b);
+static double distDiagonal(Voxel &a, Voxel &b);
+static double distDiagonal(OctreeNode *a, OctreeNode *b);
+static double distDiagonal(Node *a, Node *b);
 
 
 /**
@@ -131,7 +131,7 @@ static int distManhattan(OctreeNode *a, OctreeNode *b){
     return std::abs(a->x - b->x) + std::abs(a->y - b->y) + std::abs(a->z - b->z);
 }
 
-static int distDiagonal(Voxel &a, Voxel &b){
+static double distDiagonal(Voxel &a, Voxel &b){
     int dx = abs(a.x - b.x);
     int dy = abs(a.y - b.y);
     int dz = abs(a.z - b.z);
@@ -143,7 +143,7 @@ static int distDiagonal(Voxel &a, Voxel &b){
     double D3 = M_SQRT3;
     return (D3 - D2) * dmin + (D2 - D1) * dmid + D1 * dmax;
 }
-static int distDiagonal(OctreeNode *a, OctreeNode *b){
+static double distDiagonal(OctreeNode *a, OctreeNode *b){
     int dx = abs(a->x - b->x);
     int dy = abs(a->y - b->y);
     int dz = abs(a->z - b->z);
@@ -156,7 +156,7 @@ static int distDiagonal(OctreeNode *a, OctreeNode *b){
     return (D3 - D2) * dmin + (D2 - D1) * dmid + D1 * dmax;
 }
 
-static int distDiagonal(Node *a, Node *b){
+static double distDiagonal(Node *a, Node *b){
     int dx = abs(a->x - b->x);
     int dy = abs(a->y - b->y);
     int dz = abs(a->z - b->z);

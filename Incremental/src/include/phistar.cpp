@@ -175,7 +175,7 @@ void phi_star_search_grid(VoxelGrid &voxels, std::mutex &mutex, std::vector<Inst
 void phi_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector<InstanceData> &_instanceData,
                          float voxelsize, int id, float speed, std::atomic_bool &running, bool incremental,
                          int sim_num) {
-    std::string base = "/Users/michieldejong/Documents/Graduation/Simulator/results/svo/theta/result_theta";
+    std::string base = "/Users/michieldejong/Documents/Graduation/Simulator/results/svo/theta/result_theta_test";
     std::string ext = ".csv";
     auto t = std::chrono::system_clock::now();
     std::time_t ts = std::chrono::system_clock::to_time_t(t);
@@ -368,11 +368,11 @@ bool lineOfSight_grid(VoxelGrid &voxels, Node &start, Node &end, float voxelsize
 }
 
 static int heuristic(Node *a, Node *b){
-    return distManhattan(a,b);
+    return dist(a,b);
 }
 
 static int heuristic(Voxel &a, Voxel &b){
-    return distManhattan(a,b);
+    return dist(a,b);
 }
 
 void initializeVertex(Node *node) {

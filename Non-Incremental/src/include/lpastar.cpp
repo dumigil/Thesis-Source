@@ -198,11 +198,11 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
     //out.close();
 }
 static int heuristic(OctreeNode *a, OctreeNode *b){
-    return distManhattan(a, b);
+    return dist(a, b);
 }
 
 static int heuristic(Voxel &a, Voxel &b){
-    return distManhattan(a,b);
+    return dist(a,b);
 }
 
 std::deque<OctreeNode *>

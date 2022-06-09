@@ -36,8 +36,8 @@ void a_star_search_grid(VoxelGrid &voxels, std::mutex &mutex, std::vector<Instan
     base+=threadID;
     base+=t_start;
     base+=ext;
-    //std::ofstream out(base);
-    //out<<"start, goal, path_length, nodes_visited, time, num_evax\n";
+    std::ofstream out(base);
+    out<<"start, goal, path_length, nodes_visited, time, num_evax\n";
 
     Voxel start = simPoints().rooms[id];
     Color3 pathcol = Color3(randomFloat(0, 1), randomFloat(0, 1), randomFloat(0, 1));
@@ -58,8 +58,8 @@ void a_star_search_grid(VoxelGrid &voxels, std::mutex &mutex, std::vector<Instan
         std::thread::id this_id = std::this_thread::get_id();
         std::cout << "Starting "<<inc<<" A* pathfinding from " << start.x << " " << start.y << " " << start.z << " on thread "
                   << this_id << " thread #" << (id + 1) << "\n";
-        std::map<Voxel, Voxel> came_from;
-        std::map<Voxel, int> cost_so_far;
+        std::map<Voxel, Voxel> came_from = {};
+        std::map<Voxel, double> cost_so_far = {};
         double hExit = heuristic(start, exits);
         for (auto all: simPoints().exits) {
             double tmp = heuristic(start, all);
@@ -70,7 +70,7 @@ void a_star_search_grid(VoxelGrid &voxels, std::mutex &mutex, std::vector<Instan
         static float vSize = voxelsize;
         auto tStart = std::chrono::high_resolution_clock::now();
 
-        PriorityQueue<Voxel, int> frontier;
+        PriorityQueue<Voxel, double> frontier;
         mutex.unlock();
 
         assert(frontier.empty());
@@ -92,12 +92,12 @@ void a_star_search_grid(VoxelGrid &voxels, std::mutex &mutex, std::vector<Instan
                         && voxels(next.x, next.y, next.z) != 3
                         && voxels(next.x, next.y, next.z) != 4
                         && voxels(next.x, next.y, next.z) != 5) {
-                        int new_cost = cost_so_far[current] + distDiagonal(current, next);
+                        double new_cost = cost_so_far[current] + distDiagonal(current, next);
 
                         if (cost_so_far.find(next) == cost_so_far.end()
                             || new_cost < cost_so_far[next]) {
                             cost_so_far[next] = new_cost;
-                            int priority = new_cost + heuristic(next, exits);
+                            double priority = new_cost + heuristic(next, exits);
                             mutex.lock();
                             if (next != exits) {
                                 voxels(next.x, next.y, next.z) = voxelID;
@@ -130,9 +130,8 @@ void a_star_search_grid(VoxelGrid &voxels, std::mutex &mutex, std::vector<Instan
         std::chrono::duration<double> tThread = tFinish - tStart;
         std::cout << "Thread " << this_id << "(#" << (id + 1) << ") has found a path in " << tThread.count()
                   << " seconds\n";
-        //out<<start.x<<" "<<start.y<<" "<<start.z<<", "<<exits.x<<" "<<exits.y<<" "<<exits.z<<", "<<path.size()<<", "<<came_from.size()<<", "<<tThread.count()<<", "<<sim_num<<"\n";
-        came_from.erase(came_from.begin(), came_from.end());
-        cost_so_far.erase(cost_so_far.begin(), cost_so_far.end());
+        out<<start.x<<" "<<start.y<<" "<<start.z<<", "<<exits.x<<" "<<exits.y<<" "<<exits.z<<", "<<path.size()<<", "<<came_from.size()<<", "<<tThread.count()<<", "<<sim_num<<"\n";
+
         if(incremental) {
             if (path[pos] != exits) {
                 if (path.size() >= pos) {
@@ -161,7 +160,7 @@ void a_star_search_grid(VoxelGrid &voxels, std::mutex &mutex, std::vector<Instan
                 ), _instanceData.end());
         mutex.unlock();
     }
-    //out.close();
+    out.close();
     /*
     mutex.lock();
     Voxel exits = simPoints().exits[0];
@@ -273,7 +272,7 @@ void a_star_search_grid(VoxelGrid &voxels, std::mutex &mutex, std::vector<Instan
  */
 void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector<InstanceData> &_instanceData,
                        float voxelsize, int id, float speed, std::atomic_bool &running, bool incremental, int sim_num) {
-    std::string base = "/Users/michieldejong/Documents/Graduation/Simulator/results/svo/a_star/result_a_star";
+    std::string base = "/Users/michieldejong/Documents/Graduation/Simulator/results/tilted/result_astar_test";
     std::string ext = ".csv";
     auto t = std::chrono::system_clock::now();
     std::time_t ts = std::chrono::system_clock::to_time_t(t);
@@ -290,6 +289,7 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
     auto goalIndex = libmorton::morton3D_64_encode(simPoints().exits[0].x, simPoints().exits[0].y, simPoints().exits[0].z);
     auto start = octree.mTree[0][startIndex];
     auto exits = octree.mTree[0][goalIndex];
+
     for (auto all: simPoints().exits) {
         double tmp = heuristic(simPoints().rooms[id], all);
         if (tmp < hExit) {
@@ -300,6 +300,7 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
         }
 
     }
+
 
     static float vSize = voxelsize;
     Color3 pathcol = Color3(randomFloat(0, 1), randomFloat(0, 1), randomFloat(0, 1));
@@ -329,8 +330,8 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
                 mutex.lock();
                 nodes->attribute = 2;
                 mutex.unlock();
-
             }
+            visited = {};
             path.clear();
             _instanceData.erase(
                     remove_if(_instanceData.begin(), _instanceData.end(),
@@ -344,8 +345,8 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
                       << " on thread "
                       << this_id << " thread #" << (id + 1) << "\n";
             std::map<OctreeNode *, OctreeNode *> came_from = {};
-            std::map<OctreeNode *, int> cost_so_far = {};
-            PriorityQueue<OctreeNode *, int> frontier = {};
+            std::map<OctreeNode *, double> cost_so_far = {};
+            PriorityQueue<OctreeNode *, double> frontier = {};
             frontier.put(start, 0);
             came_from[start] = start;
             cost_so_far[start] = 0;
@@ -365,14 +366,14 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
                     //mutex.unlock();
                     auto neighbours = octree.mQTree[0][conn];
                     if(neighbours->attribute == voxelID) continue;
-                    int new_cost = cost_so_far[current] + distDiagonal(current, neighbours);
+                    double new_cost = cost_so_far[current] + distDiagonal(current, neighbours);
 
                     if (cost_so_far.find(neighbours) == cost_so_far.end()
                         || new_cost < cost_so_far[neighbours]) {
                         cost_so_far[neighbours] = new_cost;
                         //std::cout<<neighbours->x<<" "<<neighbours->y<<" "<<neighbours->z<<" \n";
 
-                        int priority = new_cost + heuristic(neighbours, exits);
+                        double priority = new_cost + heuristic(neighbours, exits);
                         frontier.put(neighbours, priority);
                         mutex.lock();
                         if(neighbours != exits) {
@@ -390,12 +391,22 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
 
             assert(path.empty());
             path = reconstruct_path_SVO(start, exits, came_from);
+            double length = 0;
+            Voxel prev = Voxel(path[0]->x, path[0]->y,path[0]->z);
+
+            for(auto all: path){
+                Voxel tmp = Voxel(all->x, all->y,all->z);
+
+                length += dist(prev, tmp);
+                prev = tmp;
+
+            }
 
             double path_length = (voxelsize * 2.11538462) * path.size();
             double path_time = path_length / speed;
             std::cout << "To find a path " << came_from.size() << " nodes have been visited\n";
 
-            std::cout << "This path is " << path_length << " meters long, and will take " << path_time
+            std::cout << "This path is " << length << " meters long, and will take " << path_time
                       << " seconds to traverse \n";
 
 
@@ -412,7 +423,7 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
             std::cout << "Thread " << this_id << "(#" << (id + 1) << ") has found a path in " << tThread.count()
                       << " seconds\n";
 
-            //out<<start->x<<" "<<start->y<<" "<<start->z<<", "<<exits->x<<" "<<exits->y<<" "<<exits->z<<", "<<path.size()<<", "<<came_from.size()<<", "<<tThread.count()<<", "<<sim_num<<"\n";
+            //out<<start->x<<" "<<start->y<<" "<<start->z<<", "<<exits->x<<" "<<exits->y<<" "<<exits->z<<", "<<length<<", "<<visited.size()<<", "<<tThread.count()<<", "<<sim_num<<"\n";
 
             std::this_thread::sleep_for(std::chrono::milliseconds(voxelSpeed));
 
@@ -431,23 +442,11 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
  * @return Manhattan distance between a and b
  */
 static int heuristic(Voxel &a, Voxel &b){
-    return distManhattan(a,b);
+    return dist(a, b);
 }
 
-static int heuristicOctree(OctreeNode * a, OctreeNode * b){
-    return std::abs(a->x * a->level - b->x * b->level) + std::abs(a->y * a->level - b->y * b->level) + std::abs(a->z * a->level - b->z * b->level);
-}
-
-static int heuristic(uint_fast64_t a, uint_fast64_t b){
-    uint_fast32_t xa, xb, ya, yb, za, zb;
-    libmorton::morton3D_64_decode(a, xa, ya, za);
-    libmorton::morton3D_64_decode(a, xb, yb, zb);
-    auto av = Voxel{xa, ya, za};
-    auto bv = Voxel{xb, yb, zb};
-    return distManhattan(av, bv);
-}
 static int heuristic(OctreeNode *a, OctreeNode *b){
-    return distManhattan(a, b);
+    return dist(a, b);
 }
 
 

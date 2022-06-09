@@ -133,7 +133,6 @@ void floodFill(VoxelGrid &voxels) {
     int fillCount = 0;
     while(!stack.empty()){
         Voxel current = stack.top();
-        //std::cout<<"[ "<<current.x<<", "<<current.y<<", "<<current.z<<" ]"<<std::endl;
         stack.pop();
         voxels(current.x, current.y,current.z) =1;
         fillCount++;
@@ -145,7 +144,6 @@ void floodFill(VoxelGrid &voxels) {
                     continue;
                 }
             }
-
         }
     }
     std::cout<<fillCount<<" extra solid voxels have been detected\n";
@@ -162,7 +160,6 @@ void printFilledVoxels(VoxelGrid &voxelGrid, const char* file_out, int attribute
     for (int i=0; i< voxelGrid.max_x-1; i++) {
         for (int j = 0; j < voxelGrid.max_y-1; j++) {
             for (int k = 0; k < voxelGrid.max_z-1; k++) {
-                //if(attribute == 3){std::cout<<voxelGrid(i, j, k)<<std::endl;}
                 if (voxelGrid(i, j, k) == attribute) {
                     outfile<< i <<" "<<j<<" "<<k<<std::endl;
                 }
@@ -184,8 +181,6 @@ void extractWalkableSpace(VoxelGrid &voxels){
         for ( int y = 0; y < voxels.max_y-25; ++y) {
             for ( int z = 0; z < voxels.max_z-1; ++z) {
                 if(voxels(x,y,z)==1) {
-                    //std::cout << x << " " << y << " " << z << std::endl;
-                    //outfile<< x << " " << y+1 << " " << z << std::endl;
                     bool space = true;
                     if(TILTED){
                         for(int i =1; i <15; i++){
@@ -210,8 +205,6 @@ void extractWalkableSpace(VoxelGrid &voxels){
                         if (voxels(x, y + 3, z) == 0) {
                             voxels(x, (y + 3), z) = 2;
                         }
-                        //if(voxels(x,y+4,z)==0){voxels(x, (y + 4), z) = 2;}
-                        //if(voxels(x,y+5,z)==0){voxels(x, (y + 5), z) = 2;}
                         count += 3;
                     }
                 }
@@ -221,10 +214,6 @@ void extractWalkableSpace(VoxelGrid &voxels){
     std::cout<<count<<" walkable voxels extracted\n";
     std::cout<<"*** Building voxelgrid done ***\n";
     std::cout<<" \n";
-}
-
-void extractStartPoints(VoxelGrid &voxels){
-    //TODO
 }
 /**
  * Generates morton codes for all the walkable voxels in the VoxelGrid.
@@ -288,7 +277,6 @@ SparseVoxelOctree createSVO(std::queue<uint_fast64_t> &mLeafs) {
             if((nodes.second->Parent->getFull() && nodes.second->isLeaf) ||
             nodes.second->Parent->getFull() && nodes.second->isFull){
                 nodes.second->Parent->isFull = true;
-                //std::cout<<"Node: "<<nodes.first<<" in level "<<n + 1<<" is full\n";
             }
         }
     }
@@ -308,7 +296,6 @@ SparseVoxelOctree createSVO(std::queue<uint_fast64_t> &mLeafs) {
  */
 std::map<uint_fast64_t, OctreeNode*> createFirstLevel(std::queue<uint_fast64_t> &buffer, std::map<uint_fast64_t , OctreeNode*> &level) {
     std::map<uint_fast64_t, OctreeNode*> parents;
-    auto max = buffer.size();
     uint_fast64_t n = 0;
     uint_fast64_t index = 0;
     while(!buffer.empty()) {
@@ -326,10 +313,8 @@ std::map<uint_fast64_t, OctreeNode*> createFirstLevel(std::queue<uint_fast64_t> 
                 leaf->isLeaf = true;
                 leaf->attribute = 2;
                 leaf->level = 1;
-                //leaf->dir = i;
                 uint_fast32_t  x, y, z;
                 libmorton::morton3D_64_decode(tmp, x, y, z);
-                //std::cout<<"Leaf: ["<<x<<" "<<y<<" "<<z<<" ]\n";
                 leaf->x = x;leaf->y = y;leaf->z = z;
                 buffer.pop();
                 level[tmp] = leaf;
@@ -341,7 +326,6 @@ std::map<uint_fast64_t, OctreeNode*> createFirstLevel(std::queue<uint_fast64_t> 
             parents[index] = parent;
             uint_fast32_t  x, y, z;
             libmorton::morton3D_64_decode(index, x, y, z);
-            //std::cout<<"Parent: ["<<(x + 2) * 2<<" "<<(y + 2) * 2<<" "<<(z + 2) * 2<<" ]\n";
             parent->x = x;parent->y = y;parent->z = z;
         } else {
             delete parent;
@@ -361,7 +345,6 @@ std::map<uint_fast64_t, OctreeNode*> createFirstLevel(std::queue<uint_fast64_t> 
 std::map<uint_fast64_t, OctreeNode *>
 createLevel(std::map<uint_fast64_t, OctreeNode *> &buffer, std::map<uint_fast64_t, OctreeNode *> &level, int nLevel) {
     std::map<uint_fast64_t, OctreeNode*> parents;
-    auto max = buffer.size();
     uint_fast64_t n = 0;
     uint_fast64_t index = 0;
     int lParent, lLeaf;
@@ -382,7 +365,6 @@ createLevel(std::map<uint_fast64_t, OctreeNode *> &buffer, std::map<uint_fast64_
                 leaf->isLeaf = false;
                 leaf->attribute = 2;
                 leaf->level = lLeaf;
-                //leaf->dir = i;
                 uint_fast32_t  x, y, z;
                 libmorton::morton3D_64_decode(tmp, x, y, z);
                 leaf->x = x;leaf->y = y;leaf->z = z;
@@ -407,29 +389,16 @@ createLevel(std::map<uint_fast64_t, OctreeNode *> &buffer, std::map<uint_fast64_
 }
 
 void createQuickAccessTree(SparseVoxelOctree &octree){
-    //std::cout<<"Creating unordered maps for quick access\n";
-    //const char* outfile = "/Users/michieldejong/Documents/Graduation/Simulator/dataset/octree.txt";
-    //std::ofstream out(outfile);
     int n = 0;
     while(n < octree.getDepth()) {
         std::unordered_map<uint_fast64_t, OctreeNode*> level;
         for (auto all: octree.mTree[n]) {
-            //if(all.second->Parent == nullptr) break;
-            /*if(all.second->isFull || all.second->isLeaf) {
-                out << all.second->x * all.second->level << " " << all.second->y * all.second->level << " "
-                    << all.second->z * all.second->level << " " << n << "\n";
-            }*/
-            //std::cout<<"Voxel ["<<all.second->x<<" "<<all.second->y<<" "<<all.second->z<<"] has parent Voxel ["<<all.second->Parent->x<<" "<<all.second->Parent->y<<" "<<all.second->Parent->z<<"] \n";
             level.emplace(all);
-
         }
         octree.mQTree.push_back(level);
         n++;
     }
-    //out.close();
 }
-
-
 
 /**
  *
@@ -437,7 +406,6 @@ void createQuickAccessTree(SparseVoxelOctree &octree){
  * @return the max values in all axis direction (to be used for voxelsize calculation).
  */
 Vec3f getMetaDataOBJ(const char* filename){
-
     std::ifstream infile(filename);
     std::string line= "";
     float minX, minY, minZ, maxX, maxY, maxZ;

@@ -282,8 +282,8 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
     base+=threadID;
     base+=t_start;
     base+=ext;
-    //std::ofstream out(base);
-    //out<<"start, goal, path_length, nodes_visited, time, num_evax\n";
+    std::ofstream out(base);
+    out<<"start, goal, path_length, nodes_visited, time, num_evax\n";
 
     double hExit = heuristic(simPoints().rooms[id], simPoints().exits[0]);
     auto startIndex = libmorton::morton3D_64_encode(simPoints().rooms[id].x, simPoints().rooms[id].y, simPoints().rooms[id].z);
@@ -412,7 +412,7 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
             std::cout << "Thread " << this_id << "(#" << (id + 1) << ") has found a path in " << tThread.count()
                       << " seconds\n";
 
-            //out<<start->x<<" "<<start->y<<" "<<start->z<<", "<<exits->x<<" "<<exits->y<<" "<<exits->z<<", "<<path.size()<<", "<<came_from.size()<<", "<<tThread.count()<<", "<<sim_num<<"\n";
+            out<<start->x<<" "<<start->y<<" "<<start->z<<", "<<exits->x<<" "<<exits->y<<" "<<exits->z<<", "<<path.size()<<", "<<came_from.size()<<", "<<tThread.count()<<", "<<sim_num<<"\n";
 
             std::this_thread::sleep_for(std::chrono::milliseconds(voxelSpeed));
 
@@ -420,7 +420,7 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
         }
 
     }
-    //out.close();
+    out.close();
 }
 
 /**
@@ -431,7 +431,7 @@ void a_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vector
  * @return Manhattan distance between a and b
  */
 static int heuristic(Voxel &a, Voxel &b){
-    return distManhattan(a,b);
+    return dist(a,b);
 }
 
 static int heuristicOctree(OctreeNode * a, OctreeNode * b){
@@ -447,7 +447,7 @@ static int heuristic(uint_fast64_t a, uint_fast64_t b){
     return distManhattan(av, bv);
 }
 static int heuristic(OctreeNode *a, OctreeNode *b){
-    return distManhattan(a, b);
+    return dist(a, b);
 }
 
 

@@ -35,8 +35,8 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
     base+=t_start;
     base+=ext;
     std::condition_variable cv;
-    //std::ofstream out(base);
-    //out<<"start, goal, path_length, nodes_visited, time, num_evax\n";
+    std::ofstream out(base);
+    out<<"start, goal, path_length, nodes_visited, time, num_evax\n";
 
     double hExit = heuristic(simPoints().rooms[id], simPoints().exits[0]);
     auto startIndex = libmorton::morton3D_64_encode(simPoints().rooms[id].x, simPoints().rooms[id].y, simPoints().rooms[id].z);
@@ -49,9 +49,7 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
             auto index = libmorton::morton3D_64_encode(all.x, all.y, all.z);
             exits = octree.mTree[0][index];
         } else {
-
         }
-
     }
 
     static float vSize = voxelsize;
@@ -65,15 +63,7 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
     bool first = true;
     int voxelID = 11 + id;
     start->isOccupied = true;
-    if(incremental){
-        voxelSpeed = std::round( 1/(speed *  (voxelsize * 2))) * 1000;
-        inc = "incremental ";
-    }
-    else {
-        voxelSpeed = 2000;
-        inc = "";
-    }
-    int pos = 1;
+
     int level = 0;
 
     while(running) {
@@ -86,9 +76,7 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
             std::thread::id this_id = std::this_thread::get_id();
             auto tStart = std::chrono::high_resolution_clock::now();
 
-            //std::cout << "Starting " << inc << " A* pathfinding from " << start->x << " " << start->y << " " << start->z
-            //          << " on thread "
-            //          << this_id << " thread #" << (id + 1) << "\n";
+
             std::map<OctreeNode *, OctreeNode *> came_from = {};
             std::map<OctreeNode *, int> cost_so_far = {};
             PriorityQueue<OctreeNode *, int> frontier = {};
@@ -103,8 +91,6 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
                 if(current->Parent == nullptr){
                     continue;
                 }
-
-
                 for (const auto &conn: getNeighbours18_morton(current->x, current->y, current->z, current->index)) {
                     if(!octree.mQTree[level].contains(conn)){
                         continue;
@@ -145,11 +131,6 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
 
             double path_length = (voxelsize * 2.11538462) * path.size();
             double path_time = path_length / speed;
-            //std::cout << "To find a path " << came_from.size() << " nodes have been visited\n";
-
-            //std::cout << "This path is " << path_length << " meters long, and will take " << path_time
-            //          << " seconds to traverse \n";
-
 
 
             cost_so_far = {};
@@ -157,19 +138,14 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
             path.front()->isOccupied = true;
             push_to_buffer(path.front(), pathcol, voxelID, mutex, vSize, _instanceData);
 
-            //
-            //for (auto &vx: path) {
-            //    push_to_buffer(vx,pathcol, voxelID, mutex, vSize, _instanceData);
-            //}
 
 
 
             auto tFinish = std::chrono::high_resolution_clock::now();
             std::chrono::duration<double> tThread = tFinish - tStart;
-            //std::cout << "Thread " << this_id << "(#" << (id + 1) << ") has found a path in " << tThread.count()
-            //          << " seconds\n";
 
-            //out<<start->x<<" "<<start->y<<" "<<start->z<<", "<<exits->x<<" "<<exits->y<<" "<<exits->z<<", "<<path.size()<<", "<<came_from.size()<<", "<<tThread.count()<<", "<<sim_num<<"\n";
+
+            out<<start->x<<" "<<start->y<<" "<<start->z<<", "<<exits->x<<" "<<exits->y<<" "<<exits->z<<", "<<path.size()<<", "<<came_from.size()<<", "<<tThread.count()<<", "<<sim_num<<"\n";
             came_from = {};
 
             std::this_thread::sleep_for(std::chrono::milliseconds(110));
@@ -201,7 +177,7 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
                 push_to_buffer(start, pathcol, voxelID, mutex, vSize, _instanceData);
 
 
-                std::this_thread::sleep_for(std::chrono::milliseconds(300));
+                std::this_thread::sleep_for(std::chrono::milliseconds(110));
             }else {
                 std::cout<<"conflict at "<<path.front()->index<<"\n";
                 mutex.unlock();
@@ -213,11 +189,11 @@ void lpa_star_search_svo(SparseVoxelOctree &octree, std::mutex &mutex, std::vect
     //out.close();
 }
 static int heuristic(OctreeNode *a, OctreeNode *b){
-    return distManhattan(a, b);
+    return dist(a, b);
 }
 
 static int heuristic(Voxel &a, Voxel &b){
-    return distManhattan(a,b);
+    return dist(a,b);
 }
 
 std::deque<OctreeNode *>

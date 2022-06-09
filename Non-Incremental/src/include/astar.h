@@ -25,8 +25,6 @@ static int heuristicOctree(OctreeNode * a, OctreeNode * b);
 
 static int heuristic(Voxel &a, Voxel &b);
 
-static int heuristic(uint_fast64_t a, uint_fast64_t b);
-
 static int heuristic(OctreeNode *a, OctreeNode *b);
 
 bool isID(InstanceData instance, int id);

@@ -98,7 +98,7 @@ private:
     GL::Mesh _mesh{NoCreate};
     GL::Buffer _instanceBuffer{NoCreate};
     Containers::Array<Containers::Optional<GL::Mesh>> _meshes;
-    Color3 _colorClear = Color3::fromSrgb({0.9f, 0.9f,0.9f});
+    Color3 _colorClear = Color3::fromSrgb({1.0f, 1.0f,1.0f});
     Color3 _colorModel = Color3::fromSrgb({0.9f, 0.9f,0.9f});
     Shaders::PhongGL _shader;
     Shaders::PhongGL _voxelShader;
@@ -249,7 +249,7 @@ void Simulator::drawEvent() {
         ImGui::InputInt("Fire size)", &firesize);
         const char* DS_items[] = {"Voxel Grid", "Sparse Voxel Octree"};
         const char* PF_items[] = {"A*", "Phi*", "LPA*"};
-        static int DS_item_current_idx = 0;
+        static int DS_item_current_idx = 1;
         static int PF_item_current_idx = 0;
         const char * DS_combo_preview_value = DS_items[DS_item_current_idx];
         const char * PF_combo_preview_value = PF_items[PF_item_current_idx];
